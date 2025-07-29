@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
-echo "✅ Kurulum başlıyor"
-pip install -r requirements.txt
-echo "✅ Build tamamlandı"
+#!/bin/bash
+
+echo "🚀 Playwright kuruluyor..."
+python -m playwright install
+
+echo "✅ Build işlemi tamamlandı."
