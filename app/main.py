@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from routes import products
-from background_tasks import start_background_updater, start_simple_updater
+from app.routes import products
+from app.background_tasks import start_background_updater, start_simple_updater
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Özkan Wood API")
