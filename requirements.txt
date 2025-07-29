@@ -1,4 +1,6 @@
 fastapi
 uvicorn
-selenium
+requests
 beautifulsoup4
+playwright
+asyncio-throttle
