@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "🚀 Playwright kuruluyor..."
-python -m playwright install
-
-echo "✅ Build işlemi tamamlandı."
+pip install --upgrade pip
+pip install -r requirements.txt
+python -m playwright install  # Eğer scraping Playwright ile yapılacaksa
