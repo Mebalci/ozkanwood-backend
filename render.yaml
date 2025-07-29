@@ -1,10 +1,7 @@
 services:
   - type: web
-    name: ozkanwood-backend
+    name: trendyol-backend
     env: python
-    buildCommand: bash build.sh
+    buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn app.main:app --host=0.0.0.0 --port=10000
-    envVars:
-      - key: PLAYWRIGHT_BROWSERS_PATH
-        value: /usr/local/share/.cache/ms-playwright
-    plan: free
+    workingDir: backend
