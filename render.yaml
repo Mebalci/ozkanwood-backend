@@ -7,3 +7,6 @@ services:
     envVars:
       - key: PLAYWRIGHT_BROWSERS_PATH
         value: /usr/local/share/.cache/ms-playwright
+      - key: PYTHONPATH
+        value: .
+
