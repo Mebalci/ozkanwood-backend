@@ -1,5 +1,7 @@
 requests
 beautifulsoup4
-fastapi==0.100.0
-uvicorn==0.23.2
+fastapi 
+uvicorn 
 playwright==1.44.0
+greenlet==2.0.2
+
