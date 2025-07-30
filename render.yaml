@@ -7,6 +7,6 @@ services:
     workingDir: .
     envVars:
       - key: PLAYWRIGHT_BROWSERS_PATH
-        value: /opt/render/.cache/ms-playwright
+        value: /usr/local/share/.cache/ms-playwright
       - key: PYTHONPATH
         value: .
