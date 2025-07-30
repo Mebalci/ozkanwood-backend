@@ -1,5 +1,5 @@
 #!/bin/bash
-
-pip install --upgrade pip
+echo "🚀 Gereksinimler yükleniyor..."
 pip install -r requirements.txt
-python -m playwright install  # Eğer scraping Playwright ile yapılacaksa
+python -m playwright install
+echo "✅ Build tamamlandı."
