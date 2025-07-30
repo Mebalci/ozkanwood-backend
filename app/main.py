@@ -23,10 +23,10 @@ async def startup_event():
     print("🚀 Özkan Wood API başlatılıyor...")
     
     # Geliştirme için basit updater kullan
-    start_simple_updater()
+    #start_simple_updater()
     
     # Prodüksyon için sürekli updater (isteğe bağlı)
-    # start_background_updater()
+    start_background_updater()
     
     print("✅ API hazır!")
 
