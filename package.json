@@ -1,0 +1,11 @@
+{
+  "name": "ozkanwood-backend",
+  "version": "1.0.0",
+  "description": "Playwright kurulumu için paket",
+  "scripts": {
+    "postinstall": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.42.1"
+  }
+}
