@@ -5,8 +5,23 @@ services:
     buildCommand: bash build.sh
     startCommand: uvicorn app.main:app --host=0.0.0.0 --port=10000
     workingDir: .
+    plan: starter  # Ücretsiz plan
+    
+    # Render ortam değişkenleri
     envVars:
       - key: PLAYWRIGHT_BROWSERS_PATH
-        value: /usr/local/share/.cache/ms-playwright
+        value: /opt/render/.cache/ms-playwright
+      - key: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
+        value: "0"
       - key: PYTHONPATH
         value: .
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: NODE_ENV
+        value: production
+        
+    # Disk alanı ve bellek ayarları
+    disk:
+      name: ozkanwood-data
+      mountPath: /opt/render/.cache
+      sizeGB: 1
