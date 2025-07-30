@@ -1,9 +1,11 @@
 #!/bin/bash
+set -e
 
-echo "📦 Gereksinimler yükleniyor..."
+echo "🔧 Paketler yükleniyor..."
+pip install --upgrade pip
 pip install -r requirements.txt
 
-echo "🎭 Playwright tarayıcıları indiriliyor..."
-python -c "from playwright.__main__ import main; main(['install', 'chromium'])"
+echo "🌐 Chromium indiriliyor..."
+python -m playwright install chromium
 
 echo "✅ Build tamamlandı."
