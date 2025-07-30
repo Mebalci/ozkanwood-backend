@@ -1,5 +1,8 @@
 #!/bin/bash
-echo "🚀 Gereksinimler yükleniyor..."
+echo "📦 Gereksinimler yükleniyor..."
 pip install -r requirements.txt
-python -m playwright install
+
+echo "🎭 Playwright tarayıcıları yükleniyor..."
+python -m playwright install --with-deps
+
 echo "✅ Build tamamlandı."
