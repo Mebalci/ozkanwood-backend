@@ -1,7 +1,0 @@
-{
-  "name": "ozkanwood-backend",
-  "private": true,
-  "devDependencies": {
-    "playwright": "^1.44.0"
-  }
-}
