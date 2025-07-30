@@ -1,25 +1,36 @@
-FROM python:3.12-slim
+FROM python:3.10-slim
 
-# Sistem bağımlılıkları (Chromium için)
+# Gerekli sistem kütüphanelerini kur
 RUN apt-get update && apt-get install -y \
-  libnss3 libatk1.0-0 libatk-bridge2.0-0 libgbm1 libcups2 \
-  libxcomposite1 libxdamage1 libxext6 libxfixes3 libxrandr2 \
-  libpango-1.0-0 libasound2 libdbus-1-3 libx11-6 \
-  && rm -rf /var/lib/apt/lists/*
+    curl \
+    wget \
+    gnupg \
+    unzip \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libgtk-3-0 \
+    libnss3 \
+    libxss1 \
+    libxtst6 \
+    libgbm1 \
+    libxshmfence-dev \
+    libx11-xcb1 \
+    && apt-get clean
 
+# Node ve Playwright tarayıcı kurulumu için gerekli
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g playwright && \
+    playwright install chromium
+
+# Uygulama dosyaları
 WORKDIR /app
-
-# Python paketleri
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
-
-# Playwright ve Chromium yükle
-RUN python -m playwright install chromium
-
-# Kodu kopyala
 COPY . .
 
-# PORT
-EXPOSE 10000
+# Python bağımlılıklarını kur
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
+# Uygulama başlat
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
