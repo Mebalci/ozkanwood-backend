@@ -3,5 +3,6 @@ beautifulsoup4
 fastapi 
 uvicorn 
 playwright==1.44.0
-greenlet==2.0.2
+greenlet==3.0.3
+
 
