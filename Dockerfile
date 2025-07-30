@@ -1,6 +1,7 @@
+# 1. Temel Python imajı
 FROM python:3.10-slim
 
-# Gerekli sistem kütüphanelerini kur
+# 2. Sistem bağımlılıkları
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
@@ -9,28 +10,35 @@ RUN apt-get update && apt-get install -y \
     fonts-liberation \
     libasound2 \
     libatk-bridge2.0-0 \
-    libgtk-3-0 \
+    libatk1.0-0 \
+    libcups2 \
+    libdbus-1-3 \
+    libdrm2 \
+    libgbm1 \
+    libnspr4 \
     libnss3 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    xdg-utils \
     libxss1 \
     libxtst6 \
-    libgbm1 \
-    libxshmfence-dev \
-    libx11-xcb1 \
-    && apt-get clean
+    ca-certificates \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Node ve Playwright tarayıcı kurulumu için gerekli
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g playwright && \
-    playwright install chromium
-
-# Uygulama dosyaları
+# 3. Uygulama dizini
 WORKDIR /app
-COPY . .
 
-# Python bağımlılıklarını kur
+# 4. Gerekli dosyaları kopyala
+COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Uygulama başlat
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
+# 5. Playwright kurulum ve tarayıcı indir
+RUN pip install playwright && playwright install chromium
+
+# 6. Uygulama dosyaları
+COPY . .
+
+# 7. Başlatma komutu
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
