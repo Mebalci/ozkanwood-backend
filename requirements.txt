@@ -2,4 +2,4 @@ fastapi
 uvicorn
 requests
 beautifulsoup4
-playwright==1.44.0
+playwright
