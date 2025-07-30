@@ -2,7 +2,10 @@ services:
   - type: web
     name: ozkanwood-backend
     env: python
-    buildCommand: bash build.sh
+    buildCommand: |
+      echo "Using Python version:"
+      python --version
+      bash build.sh
     startCommand: uvicorn app.main:app --host=0.0.0.0 --port=10000
     workingDir: .
     envVars:
