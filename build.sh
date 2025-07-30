@@ -1,12 +1,10 @@
 #!/bin/bash
 
-echo "📦 requirements.txt yükleniyor..."
+echo "🚀 Gereksinimler yükleniyor..."
 pip install -r requirements.txt
 
-echo "🔧 PLAYWRIGHT_BROWSERS_PATH set ediliyor..."
+echo "🎭 Chromium indiriliyor..."
 export PLAYWRIGHT_BROWSERS_PATH=/opt/render/.cache/ms-playwright
-
-echo "🎭 Playwright chromium indiriliyor..."
 python -m playwright install chromium
 
 echo "✅ Build tamamlandı."
